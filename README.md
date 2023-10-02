@@ -55,19 +55,19 @@ Each row of the `lending_data.csv` file used represents an organization the Alph
 **Target Column:** This is what we want to predict. This is the answer to the question, "Given the information above, will this next project succeed or tank?", we'd like to see.
 - `IS_SUCCESSFUL`: Was the money used effectively. `1` means yes, `0` means no.
 
-### Machine Learning Process
+## Neural Network Process
 
-#### Initial Test
+### Initial Test
 For a preliminary test, we used a basic 3-layer neural network just to see how far we can get. Ideally, we'd shoot for an 85% validation accuracy for a first pass.
 1. Input Layer - ReLU Activation and as many neurons as there are input features (42 after dummification).
 2. A single Hidden Layer - ReLU Activation and as many neurons as there are input features (42 after dummification). It appears that *generally* most problems can be handled with just a single Hidden Layer, so this is what we'll start with.
 3. Output Layer - Sigmoid Activation and a single output neuron as our target variable is a binary value.
 
-**Initial Results**
+#### Initial Results
 
 With those initial parameters, we managed to hit a test accuracy of **73.3%**, which is a C+ and not exactly the kind of performance we'd entrust our expensive decisions to. The model is trained for 100 epochs and only managed a 1.7% accuracy improvement during this time.
 
-#### Optimization
+### Optimization
 To improve performance, we tried to change up the number of neurons, the number of hidden layers, the activation functions used in the input and hidden layers, and extended our training time to 200 epochs. We used Keras Tuner's Hyperband to see if there's good combination of hyperparameters we could use. The following is a list of tested combinations, denoted in `[Lists like these]`.
 1. Input Layer - `[ReLU, Sigmoid, or TanH]` Activation and `[1-2]` times as many neurons as there are input features (42-84, steps of 10 used because my computer is not that strong).
 2. `[1-3]` Hidden Layers - `[ReLU, Sigmoid, or TanH]` Activation and `[1-2]` times as many neurons as there are input features (42-84, steps of 10 used because my computer is not that strong).
@@ -78,7 +78,7 @@ After about 2 hours of hyperparameter tuning, we've settled on the following str
 2. 3 Hidden Layers - 42, 72, 82 Neurons in that order. TanH Activation.
 3. Output Layer - 1 Neuron. Sigmoid Activation.
 
-**Optimized Results**
+#### Optimized Results
 
 We've improved to a remarkable **73.37%** validation accuracy, which means that just fiddling with a neural network's parameters is not sufficient for our purposes. Perhaps we need more data or a completely different approach entirely. Perhaps we're overfitting by virtue of there having 42 input columns and that we needed to shrink it down to a more manageable size. Regardless, more thinking is required.
 
