@@ -64,6 +64,7 @@ For a preliminary test, we used a basic 3-layer neural network just to see how f
 3. Output Layer - Sigmoid Activation and a single output neuron as our target variable is a binary value.
 
 **Initial Results**
+
 With those initial parameters, we managed to hit a test accuracy of **73.3%**, which is a C+ and not exactly the kind of performance we'd entrust our expensive decisions to. The model is trained for 100 epochs and only managed a 1.7% accuracy improvement during this time.
 
 #### Optimization
@@ -78,6 +79,7 @@ After about 2 hours of hyperparameter tuning, we've settled on the following str
 3. Output Layer - 1 Neuron. Sigmoid Activation.
 
 **Optimized Results**
+
 We've improved to a remarkable **73.37%** validation accuracy, which means that just fiddling with a neural network's parameters is not sufficient for our purposes. Perhaps we need more data or a completely different approach entirely. Perhaps we're overfitting by virtue of there having 42 input columns and that we needed to shrink it down to a more manageable size. Regardless, more thinking is required.
 
 ## Results
